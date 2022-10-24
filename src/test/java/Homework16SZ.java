@@ -20,7 +20,7 @@ import java.time.Duration;
 public class Homework16SZ {
 
     @Test
-    public static void createNewPlaylist()  throws InterruptedException {
+    public static void createNewPlaylist()throws InterruptedException {
 
         // open Chrome browser
         WebDriver driver = new ChromeDriver();
