@@ -17,7 +17,7 @@ public class LoginTests extends BaseTest{
 
     }
 
-    @Test (enabled = false,priority = 1)
+    @Test (enabled = true,priority = 1)
     public void LoginValidEmailValidPasswordTest ()  {
         provideEmail("demo@class.com");
         providePassword();
