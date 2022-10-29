@@ -7,20 +7,20 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginTests extends BaseTest{
-    
+public class LoginTests extends BaseTest {
 
-    
-    @Test (priority = 0)
-    public void LoginEmptyEmailPasswordTest () {
+
+    @Test(enabled = false, priority = 0)
+    public void LoginEmptyEmailPasswordTest() {
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
     }
 
-    @Test (priority = 1)
-    public void LoginValidEmailValidPasswordTest ()  {
-        provideEmail("demo@class.com");
-        providePassword();
+    @Test(dataProvider = "IncorrectLoginProviders", dataProviderClass = BaseTest.class)
+    public void LoginValidEmailValidPasswordTest(String email, String password)throws InterruptedException {
+
+        provideEmail(email); //"demo@class.com"
+        providePassword(password);//te$t$tudent
         clickSubmitBtn();
 
         WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
@@ -28,11 +28,11 @@ public class LoginTests extends BaseTest{
 
     }
 
-    @Test ( priority = 2)
-    public void LoginInvalidEmailPasswordTest () throws InterruptedException {
+    @Test(enabled = false, priority = 2)
+    public void LoginInvalidEmailPasswordTest() throws InterruptedException {
         //create common method
-        provideEmail("dem@class.com");
-        providePassword();
+        provideEmail("demo@class.com");
+        providePassword("");
         clickSubmitBtn();
 
 //        This on goes to method
@@ -52,6 +52,7 @@ public class LoginTests extends BaseTest{
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
     }
+
 
 
     @Test (enabled = false)

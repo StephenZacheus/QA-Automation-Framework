@@ -2,9 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -24,11 +22,12 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void launchBrowser (){
+    @Parameters({"baseURL"})
+    public void launchBrowser (String baseURL){
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        url = "https://bbb.testpro.io/";
+        url = baseURL;
         driver.get(url);
     }
 
@@ -44,14 +43,25 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    public void providePassword() {
+    public void providePassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
-        passwordField.sendKeys("te$t$tudent");
+        passwordField.sendKeys(password);
     }
 
     public void clickSubmitBtn() {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
+    }
+
+    @DataProvider(name = "invalidCredentials")
+    public Object[][] getCredentials() {
+
+        return new Object[][]{
+                {"Invalid@class.com", "InvalidPass" },
+                {"d@class", "" },
+                {"", "" },
+
+        };
     }
 }
