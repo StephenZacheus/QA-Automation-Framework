@@ -54,7 +54,7 @@ public class BaseTest {
         submitButton.click();
     }
 
-    @DataProvider(name = "invalidCredentials")
+    @DataProvider(name = "IncorrectLoginProviders")
     public Object[][] getCredentials() {
 
         return new Object[][]{
