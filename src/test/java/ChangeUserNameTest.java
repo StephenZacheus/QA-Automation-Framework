@@ -11,7 +11,7 @@ public class ChangeUserNameTest extends BaseTest {
     public void changeUserNameVerifyTheChange() throws InterruptedException {
     
         provideEmail("demo@class.com");
-        providePassword("");
+        providePassword();
         clickSubmitBtn();
         clickAvatarIcon();
         WebElement currentPassword = driver.findElement(By.xpath("//input[@name='current_password']"));

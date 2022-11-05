@@ -43,7 +43,7 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    public void providePassword(String password) {
+    public void providePassword() {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
         passwordField.sendKeys("te$t$tudent");

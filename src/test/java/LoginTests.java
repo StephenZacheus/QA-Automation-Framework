@@ -20,7 +20,7 @@ public class LoginTests extends BaseTest{
     @Test(priority = 1)
     public void LoginValidEmailValidPasswordTest ()  {
         provideEmail("demo@class.com");
-        providePassword("");
+        providePassword();
         clickSubmitBtn();
 
         WebElement avatarIcon = driver.findElement(By.xpath("//img[@class='avatar']"));
@@ -32,7 +32,7 @@ public class LoginTests extends BaseTest{
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
         //create common method
         provideEmail("dem@class.com");
-        providePassword("");
+        providePassword();
         clickSubmitBtn();
 
 //        This on goes to method
