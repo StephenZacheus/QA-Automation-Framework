@@ -32,7 +32,7 @@ public class LoginTests extends BaseTest {
     public void LoginInvalidEmailPasswordTest() throws InterruptedException {
         //create common method
         provideEmail("demo@class.com");
-        providePassword("");
+        providePassword();
         clickSubmitBtn();
 
 //        This on goes to method
