@@ -18,7 +18,6 @@ public class BaseTest {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
-
         }
     }
 
@@ -47,7 +46,7 @@ public class BaseTest {
     public void providePassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
-        passwordField.sendKeys(password);
+        passwordField.sendKeys("te$t$tudent");
     }
 
     public void clickSubmitBtn() {
