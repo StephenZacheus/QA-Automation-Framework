@@ -43,10 +43,10 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    public void providePassword() {
+    public void providePassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
-        passwordField.sendKeys("te$t$tudent");
+        passwordField.sendKeys(password);
     }
 
     public void clickSubmitBtn() {
@@ -54,11 +54,11 @@ public class BaseTest {
         submitButton.click();
     }
 
-    @DataProvider(name = "IncorrectLoginProviders")
-    public Object[][] getCredentials() {
+    @DataProvider(name = "invalidCredentials")
+    public static Object[][] getCredentials() {
 
         return new Object[][]{
-                {"Invalid@class.com", "InvalidPass" },
+                {"Invalid@class.com",  "InvalidPass" },
                 {"d@class", "" },
                 {"", "" },
 

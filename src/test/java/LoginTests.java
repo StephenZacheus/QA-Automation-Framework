@@ -11,16 +11,21 @@ public class LoginTests extends BaseTest{
     
 
     
-    @Test (priority = 0)
-    public void LoginEmptyEmailPasswordTest () {
+    @Test (enabled = false, priority = 0)
+    public void LoginEmptyEmailPasswordTest (String email, String password) throws InterruptedException {
+        provideEmail(email);
+        providePassword(password);
+        clickSubmitBtn();
+
+        Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
     }
 
-    @Test(priority = 1)
-    public void LoginValidEmailValidPasswordTest ()  {
-        provideEmail("demo@class.com");
-        providePassword();
+    @Test( priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
+    public void LoginValidEmailValidPasswordTest (String email, String password)  {
+        provideEmail(email);   //"demo@class.com""
+        providePassword(password);
         clickSubmitBtn();
 
         WebElement avatarIcon = driver.findElement(By.xpath("//img[@class='avatar']"));
@@ -28,24 +33,13 @@ public class LoginTests extends BaseTest{
 
     }
 
-    @Test (priority = 2)
+    @Test (enabled = false,priority = 2)
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
         //create common method
         provideEmail("dem@class.com");
-        providePassword();
+        providePassword("");
         clickSubmitBtn();
 
-//        This on goes to method
-//        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
-//        emailField.click();
-//        emailField.sendKeys("dem@class.com");
-//
-//        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
-//        passwordField.click();
-//        passwordField.sendKeys("te$t$tudent");
-//
-//        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
-//        submitButton.click();
 
         // Vd
         Thread.sleep(2000);
