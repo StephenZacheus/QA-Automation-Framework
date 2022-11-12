@@ -76,7 +76,11 @@ public class LoginTests extends BaseTest {
 
     }
 
+<<<<<<< Updated upstream
     @Test(enabled = false)
+=======
+    @Test (enabled = false)
+>>>>>>> Stashed changes
     public void PlayASongFromAllSongs(){
         LoginPage loginPage = new LoginPage(driver);
         HomePage homey = new HomePage(driver);
